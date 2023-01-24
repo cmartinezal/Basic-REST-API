@@ -193,8 +193,8 @@ router.post('/', userController.createNewUser);
 /**
  * @openapi
  * /api/v1/users/{userId}:
- *   patch:
- *     summary: Updates one or more fields of an existing user
+ *   put:
+ *     summary: Updates an existing user
  *     tags:
  *       - Users
  *     parameters:
@@ -260,7 +260,7 @@ router.post('/', userController.createNewUser);
  *                       type: string
  *                       example: "Some error message"
  */
-router.patch('/:userId', userController.updateOneUser);
+router.put('/:userId', userController.updateOneUser);
 
 /**
  * @openapi
