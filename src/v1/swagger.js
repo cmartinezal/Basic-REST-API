@@ -1,29 +1,31 @@
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
-// Basic Meta Informations about our API
+// Basic Information about our API
 const options = {
-	definition: {
+	swaggerDefinition: {
 		openapi: '3.0.0',
 		info: { title: 'Basic REST API', version: '1.0.0', description: 'Basic REST API to manage Users' },
-	},
-	servers: 'http://localhost:3000/api/',
-	components: {
-		securitySchemes: {
-			basicAuth: {
-				type: 'http',
-				scheme: 'basic',
-				name: 'Authorization',
-				in: 'header',
-				description: 'Requests should pass a basic authorization header',
+		servers: [{ url: 'http://localhost:3000' }],
+		components: {
+			securitySchemes: {
+				bearerAuth: {
+					type: 'http',
+					scheme: 'bearer',
+					name: 'Authorization',
+					bearerFormat: 'JWT',
+					in: 'header',
+					description: 'Requests should pass a basic authorization header',
+				},
 			},
 		},
+		security: [
+			{
+				bearerAuth: [],
+			},
+		],
 	},
-	security: [
-		{
-			basicAuth: [],
-		},
-	],
+
 	apis: ['./src/v1/routes/userRoutes.js', './src/database/User.js'],
 };
 
@@ -49,7 +51,7 @@ const swaggerDocs = (app, port) => {
 	// Route-Handler to visit our docs
 	app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, swaggerOptions));
 	// Make our docs in JSON format available
-	app.get('/api/v1/docs.json', (req, res) => {
+	app.get('/api/v1/docs', (req, res) => {
 		res.setHeader('Content-Type', 'application/json');
 		res.send(swaggerSpec);
 	});

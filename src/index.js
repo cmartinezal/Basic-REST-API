@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
 const morgan = require('morgan');
 const helmet = require('helmet');
 
@@ -19,6 +18,7 @@ app.use(bodyParser.json());
 app.use(cors());
 // adding morgan to log HTTP requests
 app.use(morgan('tiny'));
+// setup routes
 app.use('/api/v1/users', v1UserRouter);
 
 app.listen(PORT, () => {
