@@ -32,13 +32,9 @@ To install the project we have to install npm and execute the following commands
 <img width="1464" alt="Screenshot 2023-01-27 at 13 36 38" src="https://user-images.githubusercontent.com/84383847/215017358-4d0591d6-613d-4bee-99d4-335474cb9194.png">
 
 
-* Swagger Web:
+* Swagger Web: ```http://localhost:3000/api/docs```
 
-    <http://localhost:3000/api/docs>
-
-* JSON:
-
-    <http://localhost:3000/api/docs.json>
+* JSON: ```http://localhost:3000/api/docs.json```
     
 ## Authorization Endpoints
 
@@ -51,8 +47,8 @@ The refresh token exists to enable authorization servers to use short lifetimes 
 
 The requests can be performed to the following urls:
 
-* *POST* <http://localhost:3000/api/v1/auth/token>
-* *POST* <http://localhost:3000/api/v1/auth/refresh>
+* *POST* ``` http://localhost:3000/api/v1/auth/token```
+* *POST* ```http://localhost:3000/api/v1/auth/refresh```
     
 
 ## REST API Endpoints
@@ -61,11 +57,11 @@ The requests can be performed to the following urls:
 
 The requests can be performed to the following urls:
 
-* *GET*  <http://localhost:3000/api/users>
-* *GET*  <http://localhost:3000/api/users/userId>
-* *POST* <http://localhost:3000/api/users>
-* *PUT*  <http://localhost:3000/api/users/userId>
-* *DELETE*  <http://localhost:3000/api/users/userId>
+* *GET*  ```http://localhost:3000/api/users```
+* *GET*  ```http://localhost:3000/api/users/:userId```
+* *POST* ```http://localhost:3000/api/users```
+* *PUT*  ```http://localhost:3000/api/users/:userId```
+* *DELETE*  ```http://localhost:3000/api/users/:userId```
 
 
 ## Example: Get all users
@@ -74,8 +70,8 @@ The requests can be performed to the following urls:
 
 Use endpoint POST api/v1/auth/token.<br>
 You can use this test user to authorize:
-  - email: bettysloan@email.com,
-  - password: password1
+  - email: ```bettysloan@email.com```
+  - password: ```password1```
   
 A JWT will be issued for the test user specified:<br>
 
