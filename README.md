@@ -40,6 +40,19 @@ To install the project we have to install npm and execute the following commands
 
     <http://localhost:3000/api/docs.json>
     
+## Authorization Endpoints
+
+Authorization based in OAuth 2.0.<br>
+The access token is required to access to user secured enpoints.<br>
+The refresh token exists to enable authorization servers to use short lifetimes for access tokens without needing to involve the user when the token expires.
+
+<img width="1448" alt="Screenshot 2023-01-27 at 14 50 26" src="https://user-images.githubusercontent.com/84383847/215026384-c64327d2-fb73-4b64-a6c7-f76bcb9d3bc6.png">
+
+
+The requests can be performed to the following urls:
+
+* *POST* <http://localhost:3000/api/v1/auth/token>
+* *POST* <http://localhost:3000/api/v1/auth/refresh>
     
 
 ## REST API Endpoints
