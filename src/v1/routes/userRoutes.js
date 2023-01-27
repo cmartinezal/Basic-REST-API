@@ -11,6 +11,8 @@ const router = express.Router();
  *     summary: Get all exiting users
  *     tags:
  *       - Users
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: OK
@@ -26,7 +28,7 @@ const router = express.Router();
  *                   type: array
  *                   items:
  *                     $ref: "#/components/schemas/User"
- *       4XX:
+ *       400:
  *         description: FAILED
  *         content:
  *           application/json:
@@ -42,7 +44,39 @@ const router = express.Router();
  *                     error:
  *                       type: string
  *                       example: "Some error message"
- *       5XX:
+ *       401:
+ *         description: FAILED
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: FAILED
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     error:
+ *                       type: string
+ *                       example: "Some error message"
+ *       404:
+ *         description: FAILED
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: FAILED
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     error:
+ *                       type: string
+ *                       example: "Some error message"
+ *       500:
  *         description: FAILED
  *         content:
  *           application/json:
@@ -68,6 +102,8 @@ router.get('/', userController.getAllUsers);
  *     summary: Get one user by id
  *     tags:
  *       - Users
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - name: userId
  *         in: path
@@ -91,7 +127,7 @@ router.get('/', userController.getAllUsers);
  *                   type: array
  *                   items:
  *                     $ref: "#/components/schemas/User"
- *       4XX:
+ *       400:
  *         description: FAILED
  *         content:
  *           application/json:
@@ -107,7 +143,39 @@ router.get('/', userController.getAllUsers);
  *                     error:
  *                       type: string
  *                       example: "Some error message"
- *       5XX:
+ *       401:
+ *         description: FAILED
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: FAILED
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     error:
+ *                       type: string
+ *                       example: "Some error message"
+ *       404:
+ *         description: FAILED
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: FAILED
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     error:
+ *                       type: string
+ *                       example: "Some error message"
+ *       500:
  *         description: FAILED
  *         content:
  *           application/json:
@@ -133,6 +201,8 @@ router.get('/:userId', userController.getOneUser);
  *     summary: Create a new user
  *     tags:
  *       - Users
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *        description: User data
  *        required: true
@@ -155,7 +225,7 @@ router.get('/:userId', userController.getOneUser);
  *                   type: array
  *                   items:
  *                     $ref: "#/components/schemas/User"
- *       4XX:
+ *       400:
  *         description: FAILED
  *         content:
  *           application/json:
@@ -171,7 +241,39 @@ router.get('/:userId', userController.getOneUser);
  *                     error:
  *                       type: string
  *                       example: "Some error message"
- *       5XX:
+ *       401:
+ *         description: FAILED
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: FAILED
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     error:
+ *                       type: string
+ *                       example: "Some error message"
+ *       404:
+ *         description: FAILED
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: FAILED
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     error:
+ *                       type: string
+ *                       example: "Some error message"
+ *       500:
  *         description: FAILED
  *         content:
  *           application/json:
@@ -194,9 +296,11 @@ router.post('/', userController.createNewUser);
  * @openapi
  * /api/v1/users/{userId}:
  *   put:
- *     summary: Updates an existing user
+ *     summary: Update an existing user
  *     tags:
  *       - Users
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - name: userId
  *         in: path
@@ -227,7 +331,7 @@ router.post('/', userController.createNewUser);
  *                   type: array
  *                   items:
  *                     $ref: "#/components/schemas/User"
- *       4XX:
+ *       400:
  *         description: FAILED
  *         content:
  *           application/json:
@@ -243,7 +347,39 @@ router.post('/', userController.createNewUser);
  *                     error:
  *                       type: string
  *                       example: "Some error message"
- *       5XX:
+ *       401:
+ *         description: FAILED
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: FAILED
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     error:
+ *                       type: string
+ *                       example: "Some error message"
+ *       404:
+ *         description: FAILED
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: FAILED
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     error:
+ *                       type: string
+ *                       example: "Some error message"
+ *       500:
  *         description: FAILED
  *         content:
  *           application/json:
@@ -266,9 +402,11 @@ router.put('/:userId', userController.updateOneUser);
  * @openapi
  * /api/v1/users/{userId}:
  *   delete:
- *     summary: Removes an existing user
+ *     summary: Remove an existing user
  *     tags:
  *       - Users
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - name: userId
  *         in: path
@@ -280,7 +418,7 @@ router.put('/:userId', userController.updateOneUser);
  *     responses:
  *       204:
  *         description: OK
- *       4XX:
+ *       400:
  *         description: FAILED
  *         content:
  *           application/json:
@@ -296,7 +434,39 @@ router.put('/:userId', userController.updateOneUser);
  *                     error:
  *                       type: string
  *                       example: "Some error message"
- *       5XX:
+ *       401:
+ *         description: FAILED
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: FAILED
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     error:
+ *                       type: string
+ *                       example: "Some error message"
+ *       404:
+ *         description: FAILED
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: FAILED
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     error:
+ *                       type: string
+ *                       example: "Some error message"
+ *       500:
  *         description: FAILED
  *         content:
  *           application/json:

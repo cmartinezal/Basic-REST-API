@@ -1,9 +1,16 @@
 const userService = require('../services/userService');
+const authService = require('../services/authService');
+const bcrypt = require('bcrypt');
 
 const getAllUsers = (req, res) => {
 	try {
-		const { mode } = req.query;
-		const allUsers = userService.getAllUsers({ mode });
+		const authHeader = req.headers.authorization || '';
+		if (authHeader == '') res.sendStatus(400).send('Authorization required');
+		const token = authHeader.split(' ')[1];
+		authService.validateAccessToken(token);
+
+		const allUsers = userService.getAllUsers();
+
 		res.send({ status: 'OK', data: allUsers });
 	} catch (error) {
 		res.status(error?.status || 500).send({ status: 'FAILED', data: { error: error?.message || error } });
@@ -11,6 +18,11 @@ const getAllUsers = (req, res) => {
 };
 
 const getOneUser = (req, res) => {
+	const authHeader = req.headers.authorization || '';
+	if (authHeader == '') res.sendStatus(400).send('Authorization required');
+	const token = authHeader.split(' ')[1];
+	authService.validateAccessToken(token);
+
 	const {
 		params: { userId },
 	} = req;
@@ -28,22 +40,28 @@ const getOneUser = (req, res) => {
 	}
 };
 
-const createNewUser = (req, res) => {
+const createNewUser = async (req, res) => {
+	const authHeader = req.headers.authorization || '';
+	if (authHeader == '') res.sendStatus(400).send('Authorization required');
+	const token = authHeader.split(' ')[1];
+	authService.validateAccessToken(token);
+
 	const { body } = req;
 	if (!body.age || !body.name || !body.email || !body.password || !body.gender || !body.state) {
 		res.status(400).send({
 			status: 'FAILED',
 			data: {
-				error: "One of the following keys is missing or is empty in request body: 'age', 'name' 'nick', 'password', 'gender', 'state'",
+				error: "One of the following keys is missing or is empty in request body: 'age', 'name' 'email', 'password', 'gender', 'state'",
 			},
 		});
 		return;
 	}
-
+	const hashedPassword = await bcrypt.hash(req.body.password, 8);
 	const newUser = {
 		age: body.age,
 		name: body.name,
-		password: body.password,
+		email: body.email,
+		password: hashedPassword,
 		gender: body.gender,
 		state: body.state,
 	};
@@ -56,6 +74,11 @@ const createNewUser = (req, res) => {
 };
 
 const updateOneUser = (req, res) => {
+	const authHeader = req.headers.authorization || '';
+	if (authHeader == '') res.sendStatus(400).send('Authorization required');
+	const token = authHeader.split(' ')[1];
+	authService.validateAccessToken(token);
+
 	const {
 		body,
 		params: { userId },
@@ -66,6 +89,15 @@ const updateOneUser = (req, res) => {
 			data: { error: "Parameter ':userId' can not be empty" },
 		});
 	}
+	if (!body.age || !body.name || !body.email || !body.password || !body.gender || !body.state) {
+		res.status(400).send({
+			status: 'FAILED',
+			data: {
+				error: "One of the following keys is missing or is empty in request body: 'age', 'name' 'email', 'password', 'gender', 'state'",
+			},
+		});
+		return;
+	}
 	try {
 		const updatedUser = userService.updateOneUser(userId, body);
 		res.send({ status: 'OK', data: updatedUser });
@@ -75,6 +107,11 @@ const updateOneUser = (req, res) => {
 };
 
 const deleteOneUser = (req, res) => {
+	const authHeader = req.headers.authorization || '';
+	if (authHeader == '') res.sendStatus(400).send('Authorization required');
+	const token = authHeader.split(' ')[1];
+	authService.validateAccessToken(token);
+
 	const {
 		params: { userId },
 	} = req;

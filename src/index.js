@@ -4,6 +4,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const helmet = require('helmet');
 
+const v1AuthRouter = require('./v1/routes/authRoutes');
 const v1UserRouter = require('./v1/routes/userRoutes');
 const { swaggerDocs: V1SwaggerDocs } = require('./v1/swagger');
 
@@ -20,6 +21,7 @@ app.use(cors());
 app.use(morgan('tiny'));
 // setup routes
 app.use('/api/v1/users', v1UserRouter);
+app.use('/api/v1/auth', v1AuthRouter);
 
 app.listen(PORT, () => {
 	console.log(`API is listening on port ${PORT}`);

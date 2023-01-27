@@ -1,9 +1,9 @@
 const { v4: uuid } = require('uuid');
 const User = require('../database/User');
 
-const getAllUsers = (filterParams) => {
+const getAllUsers = () => {
 	try {
-		const allUsers = User.getAllUsers(filterParams);
+		const allUsers = User.getAllUsers();
 		return allUsers;
 	} catch (error) {
 		throw error;
@@ -13,6 +13,15 @@ const getAllUsers = (filterParams) => {
 const getOneUser = (userId) => {
 	try {
 		const user = User.getOneUser(userId);
+		return user;
+	} catch (error) {
+		throw error;
+	}
+};
+
+const getUserByEmail = (email) => {
+	try {
+		const user = User.getUserByEmail(email);
 		return user;
 	} catch (error) {
 		throw error;
@@ -57,4 +66,5 @@ module.exports = {
 	createNewUser,
 	updateOneUser,
 	deleteOneUser,
+	getUserByEmail,
 };

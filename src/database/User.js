@@ -19,7 +19,7 @@ const { saveToDatabase } = require('./utils');
  *           example: Jacobs Hayden
  *         email:
  *           type: string
- *           example: JacobsH25@email.com
+ *           example: bettysloan@email.com
  *         password:
  *           type: string
  *           example: secretPass1
@@ -46,7 +46,7 @@ const { saveToDatabase } = require('./utils');
  *           example: Jacobs Hayden
  *         email:
  *           type: string
- *           example: JacobsH25@email.com
+ *           example: bettysloan@email.com
  *         password:
  *           type: string
  *           example: secretPass1
@@ -58,13 +58,9 @@ const { saveToDatabase } = require('./utils');
  *           example: New York
  */
 
-const getAllUsers = (filterParams) => {
+const getAllUsers = () => {
 	try {
 		let users = DB.users;
-		if (filterParams.mode) {
-			return DB.users.filter((user) => user.mode.toLowerCase().includes(filterParams.mode));
-		}
-		// Other if-statements will go here for different parameters
 		return users;
 	} catch (error) {
 		throw { status: 500, message: error };
@@ -86,13 +82,28 @@ const getOneUser = (userId) => {
 	}
 };
 
+const getUserByEmail = (email) => {
+	try {
+		const user = DB.users.find((user) => user.email === email);
+		if (!user) {
+			throw {
+				status: 400,
+				message: `Can't find user with the email '${email}'`,
+			};
+		}
+		return user;
+	} catch (error) {
+		throw { status: error?.status || 500, message: error?.message || error };
+	}
+};
+
 const createNewUser = (newUser) => {
 	try {
-		const isAlreadyAdded = DB.users.findIndex((user) => user.name === newUser.name) > -1;
+		const isAlreadyAdded = DB.users.findIndex((user) => user.email === newUser.email) > -1;
 		if (isAlreadyAdded) {
 			throw {
 				status: 400,
-				message: `User with the name '${newUser.name}' already exists`,
+				message: `User with the email '${newUser.email}' already exists`,
 			};
 		}
 		DB.users.push(newUser);
@@ -105,11 +116,11 @@ const createNewUser = (newUser) => {
 
 const updateOneUser = (userId, changes) => {
 	try {
-		const isAlreadyAdded = DB.users.findIndex((user) => user.name === changes.name) > -1;
+		const isAlreadyAdded = DB.users.findIndex((user) => user.email === changes.email) > -1;
 		if (isAlreadyAdded) {
 			throw {
 				status: 400,
-				message: `User with the name '${changes.name}' already exists`,
+				message: `User with the email '${changes.email}' already exists`,
 			};
 		}
 		const indexForUpdate = DB.users.findIndex((user) => user.id === userId);
@@ -154,4 +165,5 @@ module.exports = {
 	getOneUser,
 	updateOneUser,
 	deleteOneUser,
+	getUserByEmail,
 };

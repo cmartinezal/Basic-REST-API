@@ -19,14 +19,15 @@ const options = {
 				},
 			},
 		},
+		/*
 		security: [
 			{
 				bearerAuth: [],
 			},
-		],
+		],*/
 	},
 
-	apis: ['./src/v1/routes/userRoutes.js', './src/database/User.js'],
+	apis: ['./src/v1/routes/authRoutes.js', './src/database/Auth.js', './src/v1/routes/userRoutes.js', './src/database/User.js'],
 };
 
 var swaggerOptions = {
