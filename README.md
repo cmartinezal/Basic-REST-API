@@ -2,9 +2,9 @@
 
 This project implements basic REST API implemented in Node js and documented with swagger with JWT authentication.
 
-To simplify the project and focus more on the API best practices, the implementation has been done from the server side without using any database.
+To simplify the project, the implementation has been done from the server side without using any database.
 
-A JSON file is used to save data and mock up the database layer althought this logic can be transferred to other databases.
+A JSON file is used to save data and mock up the database layer, althought this logic can be transferred to other databases.
 
 
 ## Achitecture
