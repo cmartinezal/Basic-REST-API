@@ -1,6 +1,6 @@
 # Basic-REST-API
 
-This project creates basic REST API to manage users implemented in node.js and documented with Swagger that uses JWT authentication.
+This project creates basic REST API to manage users implemented in NodeJS and documented with Swagger that uses JWT authentication.
 
 To simplify the project, the implementation has been done from the server side without using any database.
 
