@@ -1,6 +1,22 @@
 # Basic-REST-API
 
-A basic REST API implemented in Node.js with Express and documented with Swagger
+This project implements basic REST API implemented in Node js and documented with swagger with JWT authentication.
+
+To simplify the project and focus more on the API, the implementation has been done from the server side without using any database.
+
+A JSON file is used to save data and mock up the database layer althought this logic can be transferred to other databases.
+
+
+## Achitecture
+
+This project uses a 3 layer architecture: 
+
+![Diagrama sin título drawio](https://user-images.githubusercontent.com/84383847/215024085-cb5886c2-fb97-4d9b-8f63-7620999e374a.png)
+
+- **1. Controller:** Handles the requests and responses for our endpoints.
+- **2. Service Layer:** Defines business logic and exports the method that are used by the controller.
+- **3.  Data Access Layer:** This is the layer that interacts with the Database or in our case the local JSON file that mimics our Database.
+
 
 ## Installation
 
@@ -41,5 +57,27 @@ The requests can be performed to the following urls:
 
 ## Example: Get all users
 
-<img width="1453" alt="Screenshot 2023-01-24 at 17 29 13" src="https://user-images.githubusercontent.com/84383847/214256977-15637dd7-e1f4-42eb-8f41-37922cd17e5c.png">
+### 1. Get token with user data
+
+Use endpoint POST api/v1/auth/token.<br>
+You can use this test user to authorize:
+  - email: bettysloan@email.com,
+  - password: password1
+  
+A JWT will be issued for the test user specified:<br>
+
+ <img width="1408" alt="Screenshot 2023-01-27 at 13 49 31" src="https://user-images.githubusercontent.com/84383847/215018551-9fa6ae57-0e14-4893-9994-a9e90d9985f5.png">
+
+
+Copy the value of access_token in Authorization to allow Swagger to send the Authorization header required in the secured enpoints:<br>
+
+<img width="421" alt="Screenshot 2023-01-27 at 13 51 30" src="https://user-images.githubusercontent.com/84383847/215019554-bc6d7fad-4105-4113-9896-35614996d5fb.png">
+
+
+### 2. Access to Get all users secured endpoint
+
+As we can see the authorization header is sent in the request and we can access to the secure endpoint:
+
+<img width="1430" alt="Screenshot 2023-01-27 at 13 55 40" src="https://user-images.githubusercontent.com/84383847/215019280-d5080f0d-e52c-4986-bf96-e8685a66ecab.png">
+
 
