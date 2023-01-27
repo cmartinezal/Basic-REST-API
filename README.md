@@ -13,7 +13,7 @@ To install the project we have to install npm and execute the following commands
 
 ## Swagger documentation
 
-<img width="1547" alt="Screenshot 2023-01-24 at 17 28 52" src="https://user-images.githubusercontent.com/84383847/214257010-7706b5ad-ede8-4765-b614-16a8b1093600.png">
+<img width="1464" alt="Screenshot 2023-01-27 at 13 36 38" src="https://user-images.githubusercontent.com/84383847/215017358-4d0591d6-613d-4bee-99d4-335474cb9194.png">
 
 
 * Swagger Web:
