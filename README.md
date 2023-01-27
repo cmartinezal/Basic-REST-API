@@ -1,6 +1,6 @@
 # Basic-REST-API
 
-This project implements basic REST API implemented in Node js and documented with swagger with JWT authentication.
+This project implements basic REST API to manage users implemented in Node js and documented with swagger with JWT authentication.
 
 To simplify the project, the implementation has been done from the server side without using any database.
 
