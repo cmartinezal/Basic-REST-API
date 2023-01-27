@@ -1,6 +1,6 @@
 # Basic-REST-API
 
-This project implements basic REST API to manage users implemented in Node js and documented with swagger with JWT authentication.
+This project creates basic REST API to manage users implemented in node.js and documented with Swagger that uses JWT authentication.
 
 To simplify the project, the implementation has been done from the server side without using any database.
 
@@ -14,7 +14,7 @@ This project uses a 3 layer architecture:
 ![Diagrama sin título drawio](https://user-images.githubusercontent.com/84383847/215024085-cb5886c2-fb97-4d9b-8f63-7620999e374a.png)
 
 - **1. Controller:** Handles the requests and responses for our endpoints.
-- **2. Service Layer:** Defines business logic and exports the method that are used by the controller.
+- **2. Service Layer:** Defines business logic and exports the methods that are used by the controller.
 - **3.  Data Access Layer:** This is the layer that interacts with the Database or in our case the local JSON file that mimics our Database.
 
 
@@ -42,8 +42,8 @@ To install the project we have to install npm and execute the following commands
     
 ## Authorization Endpoints
 
-Authorization based in OAuth 2.0.<br>
-The access token is required to access to user secured enpoints.<br>
+The authorization is based in OAuth 2.0.<br>
+The access token is required to access to users secured enpoints.<br>
 The refresh token exists to enable authorization servers to use short lifetimes for access tokens without needing to involve the user when the token expires.
 
 <img width="1448" alt="Screenshot 2023-01-27 at 14 50 26" src="https://user-images.githubusercontent.com/84383847/215026384-c64327d2-fb73-4b64-a6c7-f76bcb9d3bc6.png">
