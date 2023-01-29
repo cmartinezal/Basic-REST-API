@@ -1,10 +1,8 @@
 const userService = require('../services/userService');
-const authController = require('../controllers/authController');
 const bcrypt = require('bcrypt');
 
 const getAllUsers = (req, res) => {
 	try {
-		authController.validateAccessToken(req, res);
 		const allUsers = userService.getAllUsers();
 		res.send({ status: 'OK', data: allUsers });
 	} catch (error) {
@@ -13,7 +11,6 @@ const getAllUsers = (req, res) => {
 };
 
 const getOneUser = (req, res) => {
-	authController.validateAccessToken(req, res);
 	const {
 		params: { userId },
 	} = req;
@@ -32,7 +29,6 @@ const getOneUser = (req, res) => {
 };
 
 const createNewUser = async (req, res) => {
-	authController.validateAccessToken(req, res);
 	const { body } = req;
 	if (!body.age || !body.name || !body.email || !body.password || !body.gender || !body.state) {
 		res.status(400).send({
@@ -61,7 +57,6 @@ const createNewUser = async (req, res) => {
 };
 
 const updateOneUser = (req, res) => {
-	authController.validateAccessToken(req, res);
 	const {
 		body,
 		params: { userId },
@@ -90,7 +85,6 @@ const updateOneUser = (req, res) => {
 };
 
 const deleteOneUser = (req, res) => {
-	authController.validateAccessToken(req, res);
 	const {
 		params: { userId },
 	} = req;

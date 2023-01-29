@@ -31,7 +31,7 @@ const refreshAccessToken = (req, res) => {
 	}
 };
 
-const validateAccessToken = (req, res) => {
+const validateAccessToken = (req, res, next) => {
 	const {
 		headers: { authorization },
 	} = req;
@@ -39,9 +39,9 @@ const validateAccessToken = (req, res) => {
 		if (!authorization) res.sendStatus(400).send('Authorization required');
 		const token = authorization.split(' ')[1];
 		const authResponse = authService.validateAccessToken(token);
-		return authResponse;
+		next();
 	} catch (error) {
-		throw error;
+		res.status(error?.status || 500).send({ status: 'FAILED', data: { error: error?.message || error } });
 	}
 };
 

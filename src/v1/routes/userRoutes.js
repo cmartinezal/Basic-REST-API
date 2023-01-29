@@ -1,5 +1,6 @@
 const express = require('express');
 const userController = require('../../controllers/userController');
+const authController = require('../../controllers/authController');
 const router = express.Router();
 
 /**
@@ -91,7 +92,7 @@ const router = express.Router();
  *                       type: string
  *                       example: "Some error message"
  */
-router.get('/', userController.getAllUsers);
+router.get('/', authController.validateAccessToken, userController.getAllUsers);
 
 /**
  * @openapi
@@ -190,7 +191,7 @@ router.get('/', userController.getAllUsers);
  *                       type: string
  *                       example: "Some error message"
  */
-router.get('/:userId', userController.getOneUser);
+router.get('/:userId', authController.validateAccessToken, userController.getOneUser);
 
 /**
  * @openapi
@@ -288,7 +289,7 @@ router.get('/:userId', userController.getOneUser);
  *                       type: string
  *                       example: "Some error message"
  */
-router.post('/', userController.createNewUser);
+router.post('/', authController.validateAccessToken, userController.createNewUser);
 
 /**
  * @openapi
@@ -394,7 +395,7 @@ router.post('/', userController.createNewUser);
  *                       type: string
  *                       example: "Some error message"
  */
-router.put('/:userId', userController.updateOneUser);
+router.put('/:userId', authController.validateAccessToken, userController.updateOneUser);
 
 /**
  * @openapi
@@ -481,6 +482,6 @@ router.put('/:userId', userController.updateOneUser);
  *                       type: string
  *                       example: "Some error message"
  */
-router.delete('/:userId', userController.deleteOneUser);
+router.delete('/:userId', authController.validateAccessToken, userController.deleteOneUser);
 
 module.exports = router;
