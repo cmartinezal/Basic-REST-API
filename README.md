@@ -27,7 +27,7 @@ To install the project we have to install npm and execute the following commands
 
 ## Swagger documentation
 
-<img width="1464" alt="Swagger documentation" src="https://user-images.githubusercontent.com/84383847/215017358-4d0591d6-613d-4bee-99d4-335474cb9194.png">
+<img width="1459" alt="Swagger documentation" src="https://user-images.githubusercontent.com/84383847/215305025-388ad447-4ff8-4f00-8c38-15671211be02.png">
 
 - Swagger Web: ```http://localhost:3000/api/docs```
 
