@@ -63,17 +63,17 @@ The requests can be performed to the following urls:
 
 ### 1. Get token with user data
 
-Use endpoint POST api/v1/auth/token.\
+Use endpoint POST api/v1/auth/token.
 You can use this test user to authorize:
 
 - email: ```bettysloan@email.com```
 - password: ```password1```
   
-A JWT will be issued for the test user specified:\
+A JWT will be issued for the test user specified:
 
  <img width="1408" alt="Token request" src="https://user-images.githubusercontent.com/84383847/215018551-9fa6ae57-0e14-4893-9994-a9e90d9985f5.png">
 
-Copy the value of access_token in Authorization to allow Swagger to send the Authorization header required in the secured enpoints:\
+Copy the value of access_token in Authorization to allow Swagger to send the Authorization header required in the secured enpoints:
 
 <img width="421" alt="Authorization with token" src="https://user-images.githubusercontent.com/84383847/215019554-bc6d7fad-4105-4113-9896-35614996d5fb.png">
 
