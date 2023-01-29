@@ -1,21 +1,15 @@
-const express = require('express');
-const router = express.Router();
-const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const userService = require('../services/userService');
 const authService = require('../services/authService');
-router.use(bodyParser.urlencoded({ extended: false }));
-router.use(bodyParser.json());
 
 const generateAccessToken = (req, res) => {
 	try {
 		const { body } = req;
-		const email = body.email;
-		if (!body.email || !body.password) res.status(400).send('Bad request');
-		const user = userService.getUserByEmail(email);
-		if (!user) res.status(404).send('User does not exist!');
+		if (!body.email || !body.password) res.status(400).send('Bad request: email and password required');
+		const user = userService.getUserByEmail(body.email);
+		if (!user) res.status(401).send('Not authorized');
 		const validPassword = bcrypt.compareSync(body.password, user.password);
-		if (!validPassword) return res.status(400).send('Invalid Email or Password.');
+		if (!validPassword) return res.status(401).send('Not authorized');
 		const token = authService.generateAccessToken(body.email);
 		res.send({ status: 'OK', access_token: token.accessToken, refresh_token: token.refreshToken, token_type: 'Bearer', expires_in: '15 min' });
 	} catch (error) {
@@ -26,9 +20,8 @@ const generateAccessToken = (req, res) => {
 const refreshAccessToken = (req, res) => {
 	try {
 		const { body } = req;
-		const refreshToken = body.token;
-		if (!refreshToken) res.status(400).send('Bad request');
-		const tokenUser = authService.validateRefreshToken(refreshToken);
+		if (!body.token) res.status(400).send('Bad request: token is required');
+		const tokenUser = authService.validateRefreshToken(body.token);
 		const user = userService.getOneUser(tokenUser.id);
 		if (!user) res.status(401).send('Not authorized');
 		const token = authService.generateAccessToken(user.email);
@@ -38,7 +31,22 @@ const refreshAccessToken = (req, res) => {
 	}
 };
 
+const validateAccessToken = (req, res) => {
+	const {
+		headers: { authorization },
+	} = req;
+	try {
+		if (!authorization) res.sendStatus(400).send('Authorization required');
+		const token = authorization.split(' ')[1];
+		const authResponse = authService.validateAccessToken(token);
+		return authResponse;
+	} catch (error) {
+		throw error;
+	}
+};
+
 module.exports = {
 	generateAccessToken,
 	refreshAccessToken,
+	validateAccessToken,
 };
