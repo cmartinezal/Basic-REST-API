@@ -1,12 +1,47 @@
 # Basic-REST-API
 
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+    </li>
+    <li>
+      <a href="#project-achitecture">Project Achitecture</a>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a>
+       <ul>
+          <li><a href="#swagger-documentation">Swagger Documentation</a></li>
+          <li><a href="#authorization-endpoints">Authorization Endpoints</a></li>
+          <li><a href="#rest-api-endpoints">REST API Endpoints</a></li>
+       </ul>
+    <li>
+        <a href="#example-get-all-users">Example: Get all users</a>
+        <ul>
+          <li><a href="#1-get-token-with-user-data">1. Get token with user data</a></li>
+          <li><a href="#2-access-to-get-all-users-secured-endpoint">2. Access to Get all users secured endpoint</a></li>
+       </ul>
+    </li>
+  </ol>
+</details>
+
+## About The Project
+
 This project creates basic REST API to manage users implemented in NodeJS and documented with Swagger that uses JWT authentication.
 
 To simplify the project, the implementation has been done from the server side without using any database.
 
 A JSON file is used to save data and mock up the database layer, although this logic can be transferred to other databases.
 
-## Achitecture
+## Project Achitecture
 
 This project uses a 3 layer architecture:
 
@@ -17,7 +52,18 @@ This project uses a 3 layer architecture:
 - **2. Service Layer:** Defines business logic and exports the methods that are used by the controller.
 - **3.  Data Access Layer:** This is the layer that interacts with the Database or in our case the local JSON file that mimics our Database.
 
-## Installation
+## Getting Started
+
+### Prerequisites
+
+npm must be installed.\
+To download the latest version of npm, on the command line, run the following command:
+
+```sh
+    npm install -g npm@latest
+```
+
+### Installation
 
 To install the project we have to install npm and execute the following commands:
 
@@ -25,8 +71,9 @@ To install the project we have to install npm and execute the following commands
     npm install
     npm start
 ```
+## Usage
 
-## Swagger documentation
+### Swagger Documentation
 
 <img width="1459" alt="Swagger documentation" src="https://user-images.githubusercontent.com/84383847/215305025-388ad447-4ff8-4f00-8c38-15671211be02.png">
 
@@ -34,7 +81,7 @@ To install the project we have to install npm and execute the following commands
 
 - JSON: ```http://localhost:3000/api/docs.json```
 
-## Authorization Endpoints
+### Authorization Endpoints
 
 The authorization is based in OAuth 2.0.\
 The access token is required to access to users secured enpoints.\
@@ -47,7 +94,7 @@ The requests can be performed to the following urls:
 - *POST* ```http://localhost:3000/api/v1/auth/token```
 - *POST* ```http://localhost:3000/api/v1/auth/refresh```
 
-## REST API Endpoints
+### REST API Endpoints
 
 <img width="1448" alt="User Endpoints" src="https://user-images.githubusercontent.com/84383847/214256720-7cdbb197-3f02-4710-ac0c-4d4efb85c6b5.png">
 
