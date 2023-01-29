@@ -1,5 +1,4 @@
 const DB = require('./db.json');
-const { saveToDatabase } = require('./utils');
 const jwt = require('jsonwebtoken');
 //Private keys
 const ACCESS_TOKEN_SECRET =
@@ -49,7 +48,7 @@ const generateAccessToken = (email) => {
 		if (!user) {
 			throw {
 				status: 404,
-				message: `User with the email '${email}' is not valid`,
+				message: 'User not found',
 			};
 		}
 		const accessToken = jwt.sign({ id: user.id }, ACCESS_TOKEN_SECRET, { expiresIn: '15m' });
@@ -68,7 +67,7 @@ const validateAccessToken = (token) => {
 		if (!user) {
 			throw {
 				status: 401,
-				message: `Not authorized`,
+				message: 'Not authorized',
 			};
 		}
 		return tokenData;
@@ -84,7 +83,7 @@ const validateRefreshToken = (token) => {
 		if (!user) {
 			throw {
 				status: 401,
-				message: `Not authorized`,
+				message: 'Not authorized',
 			};
 		}
 		return tokenData;

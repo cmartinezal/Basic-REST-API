@@ -12,17 +12,6 @@
       "updatedAt": "2023-01-24T08:10:48.712Z"
     },
     {
-      "age": 36,
-      "name": "Serena Britt",
-      "email": "serenabritt@email.com",
-      "password": "$2a$08$LMlCP5N3AXdVRTTTQSP6JePvRAH4r.O9QcTxKyMhWU36SoMJYKRBa",
-      "gender": "female",
-      "state": "Arizona",
-      "id": "13d26a63-e2d5-4897-bc27-091a147f38e5",
-      "createdAt": "2015-09-10T03:07:45.712Z",
-      "updatedAt": "2021-07-15T07:00:57.712Z"
-    },
-    {
       "age": 34,
       "name": "Jacobs Hayden",
       "email": "jacobshayden@email.com",
@@ -32,6 +21,17 @@
       "id": "d9434dd6-66a9-440e-b604-9b68ed28cbf5",
       "createdAt": "2016-09-05T10:51:04.712Z",
       "updatedAt": "2014-09-05T06:01:44.712Z"
+    },
+    {
+      "age": 36,
+      "name": "Serena Britt",
+      "email": "serenabritt@email.com",
+      "password": "$2a$08$LMlCP5N3AXdVRTTTQSP6JePvRAH4r.O9QcTxKyMhWU36SoMJYKRBa",
+      "gender": "female",
+      "state": "Arizona",
+      "id": "13d26a63-e2d5-4897-bc27-091a147f38e5",
+      "createdAt": "2015-09-10T03:07:45.712Z",
+      "updatedAt": "2021-07-15T07:00:57.712Z"
     },
     {
       "age": 37,
@@ -45,6 +45,17 @@
       "updatedAt": "2014-11-13T04:50:07.712Z"
     },
     {
+      "age": 18,
+      "name": "Norma Mcgowan",
+      "email": "norma.mcgowan@email.com",
+      "password": "$2a$08$VSCNhLQ78cEU.LMSwi0RNOZug7wnkMn.3bnAEe.ROlKMHTv4JS.mC",
+      "gender": "female",
+      "state": "Arizona",
+      "id": "6d9d81e9-5c29-4efd-b682-215daa00fe4a",
+      "createdAt": "2018-12-12T06:10:55.712Z",
+      "updatedAt": "2017-10-23T08:41:44.712Z"
+    },
+    {
       "age": 20,
       "name": "Newton Perkins",
       "email": "newtonp@email.com",
@@ -56,18 +67,7 @@
       "updatedAt": "2016-01-19T03:01:15.712Z"
     },
     {
-      "age": 38,
-      "name": "Norma Mcgowan",
-      "email": "norma.mcgowan@email.com",
-      "password": "$2a$08$VSCNhLQ78cEU.LMSwi0RNOZug7wnkMn.3bnAEe.ROlKMHTv4JS.mC",
-      "gender": "female",
-      "state": "Arizona",
-      "id": "6d9d81e9-5c29-4efd-b682-215daa00fe4a",
-      "createdAt": "2018-12-12T06:10:55.712Z",
-      "updatedAt": "2017-10-23T08:41:44.712Z"
-    },
-    {
-      "age": 33,
+      "age": 23,
       "name": "Judy Madden",
       "email": "juddym@email.com",
       "password": "$2a$08$umI/8GS4gGX3Q2lpvrNmxufODNY6xYe/2HkQaNl7g3imPAPCrUPkq",

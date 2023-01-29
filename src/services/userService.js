@@ -63,8 +63,8 @@ const deleteOneUser = (userId) => {
 module.exports = {
 	getAllUsers,
 	getOneUser,
+	getUserByEmail,
 	createNewUser,
 	updateOneUser,
 	deleteOneUser,
-	getUserByEmail,
 };
