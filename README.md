@@ -10,7 +10,8 @@ A JSON file is used to save data and mock up the database layer, although this l
 
 This project uses a 3 layer architecture:
 
-![Project architecture](https://user-images.githubusercontent.com/84383847/215024085-cb5886c2-fb97-4d9b-8f63-7620999e374a.png)
+![Project architecture](https://user-images.githubusercontent.com/84383847/215305163-7fc9cf27-1d46-44cc-a94a-913778577060.png)
+
 
 - **1. Controller:** Handles the requests and responses for our endpoints.
 - **2. Service Layer:** Defines business logic and exports the methods that are used by the controller.
